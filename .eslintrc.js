@@ -1,27 +1,28 @@
 module.exports = {
   env: {
     es6: true,
-    node: true
+    node: true,
   },
-  extends: ["airbnb-base", "prettier"],
-  plugins: ["prettier"],
+  extends: ['airbnb-base', 'prettier'],
+  plugins: ['prettier'],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: 'module',
   },
   rules: {
     // vai informar como erro código fora de padrão
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
     // desabilita a obrigatoriedade de todo método de uma classe ter o método this
-    "class-methods-use-this": "off",
+    'class-methods-use-this': 'off',
     // permiti receber um parâmetro e fazer alterações
-    "no-param-reassign": "off",
+    'no-param-reassign': 'off',
     // não será obrigatório a criação de variáveis deste modo: nossaVariavel
-    camelcase: "off",
-    "no-unused-vars": ["error", { argsIgnorePattern: "next" }]
-  }
+    camelcase: 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    'import/no-unresolved ': 'off',
+  },
 };

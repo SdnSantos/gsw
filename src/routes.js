@@ -4,8 +4,6 @@ import SMSController from './app/controllers/SMSController';
 
 const routes = new Router();
 
-routes.get('/', (req, res) => {
-  return res.json({ msg: 'Hello World' });
-});
+routes.post('/sms', SMSController.post);
 
 export default routes;
