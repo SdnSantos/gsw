@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
-import SMSController from './app/controllers/SMSController';
+import SMSNumController from './app/controllers/SMSNumController';
+import SMSLetController from './app/controllers/SMSLetController';
 
 const routes = new Router();
 
-routes.post('/sms', SMSController.post);
+routes.post('/smsnum', SMSNumController.post);
+routes.post('/smslet', SMSLetController.post);
 
 export default routes;
