@@ -1,12 +1,19 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
-// import SMS from '../schemas/SMS';
+
+import SMS from '../schemas/SMS';
 
 class SMSNumController {
-  async post(req, res) {
-    const { frase } = req.body;
+  async show(req, res) {
+    const smss = await SMS.find();
 
-    if (frase.length <= 255) {
+    return res.json(smss);
+  }
+
+  async post(req, res) {
+    const { usuario, destino, msg } = req.body;
+
+    if (msg.length <= 255) {
       const teclado = {
         ABC: 2,
         DEF: 3,
@@ -28,17 +35,17 @@ class SMSNumController {
       let teclaAnterior = '';
       let saida = '';
 
-      // PERCORRENDO A FRASE PASSADA
-      for (let i = 0; i < frase.length; i++) {
+      // PERCORRENDO A MENSAGEM PASSADA
+      for (let i = 0; i < msg.length; i++) {
         // PERCORRENDO AS CHAVES
         for (let j = 0; j < chave.length; j++) {
           tecla = chave[j];
-          // VERIFICANDO SE TEM NA CHAVE A LETRA DA FRASE
-          if (chave[j].indexOf(frase[i]) !== -1) {
+          // VERIFICANDO SE TEM NA CHAVE A LETRA DA MENSAGEM
+          if (chave[j].indexOf(msg[i]) !== -1) {
             // PERCORRENDO CADA LETRA DA CHAVE
             // for (let k = 0; k < chave[j].length; k++) {
             let k = 0;
-            while (chave[j][k] !== frase[i]) {
+            while (chave[j][k] !== msg[i]) {
               if (tecla === teclaAnterior) {
                 saida += '_';
               }
@@ -51,9 +58,25 @@ class SMSNumController {
           }
         }
       }
-      return res.json(saida);
+
+      //---------------------------------------------------------------------
+      //    SALVAMENTO NO MONGO
+      //---------------------------------------------------------------------
+      await SMS.create({
+        usuario,
+        destino,
+        msg,
+        sequencia: saida,
+      });
+
+      return res.json({
+        usuario,
+        destino,
+        msg,
+        sequencia: saida,
+      });
     }
-    return res.status(400).json({ erro: 'Frase maior que 255 caracteres' });
+    return res.status(400).json({ erro: 'Mensagem maior que 255 caracteres' });
   }
 }
 

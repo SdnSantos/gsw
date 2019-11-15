@@ -1,10 +1,10 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
-// import SMS from '../schemas/SMS';
+import SMS from '../schemas/SMS';
 
 class SMSLetController {
   async post(req, res) {
-    const { sequencia } = req.body;
+    const { usuario, destino, sequencia } = req.body;
 
     const teclado = {
       ABC: 2,
@@ -58,7 +58,29 @@ class SMSLetController {
         proxNum = sequencia[cont];
       }
     }
-    return res.json(saida);
+
+    if (saida >= 255) {
+      return res
+        .status(400)
+        .json({ error: 'Mensagem maior que 255 caracteres!' });
+    }
+
+    //---------------------------------------------------------------------
+    //    SALVAMENTO NO MONGO
+    //---------------------------------------------------------------------
+    await SMS.create({
+      usuario,
+      destino,
+      msg: saida,
+      sequencia,
+    });
+
+    return res.json({
+      usuario,
+      destino,
+      msg: saida,
+      sequencia,
+    });
   }
 }
 

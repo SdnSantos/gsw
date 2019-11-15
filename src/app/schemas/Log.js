@@ -1,17 +1,14 @@
 import mongoose from 'mongoose';
 
-const SMSSchema = new mongoose.Schema(
+const LogSchema = new mongoose.Schema(
   {
     usuario: {
       type: String,
     },
-    destino: {
+    metodo: {
       type: String,
     },
-    msg: {
-      type: String,
-    },
-    sequencia: {
+    rota: {
       type: String,
     },
   },
@@ -20,4 +17,4 @@ const SMSSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model('SMS', SMSSchema);
+export default mongoose.model('LOG', LogSchema);
