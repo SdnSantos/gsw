@@ -2,7 +2,7 @@
 import request from 'supertest';
 import app from '../../src/app';
 
-describe('SMS - POST', () => {
+describe('SMS', () => {
   it('Mandando a letra A tem que retornar 2', async () => {
     const response = await request(app)
       .post('/smss')
@@ -144,6 +144,24 @@ describe('SMS - POST', () => {
       destinatario: '000002',
       msg: 'TESTE DE MESA',
       sequencia: '833777783303_33063377772',
+    });
+  });
+
+  it('Mandando a letra DE tem que retornar 3_33', async () => {
+    const response = await request(app)
+      .post('/smss')
+      .send({
+        usuario: '000001',
+        destinatario: '000002',
+        msg: 'DE',
+        sequencia: '',
+      });
+
+    expect(response.body).toStrictEqual({
+      usuario: '000001',
+      destinatario: '000002',
+      msg: 'DE',
+      sequencia: '3_33',
     });
   });
 });
