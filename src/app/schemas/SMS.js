@@ -5,7 +5,7 @@ const SMSSchema = new mongoose.Schema(
     usuario: {
       type: String,
     },
-    destino: {
+    destinatario: {
       type: String,
     },
     msg: {

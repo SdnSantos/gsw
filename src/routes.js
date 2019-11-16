@@ -2,17 +2,15 @@ import { Router } from 'express';
 
 import Log from './app/schemas/Log';
 
-import SMSController from './app/controllers/SMSController';
-import SMSNumController from './app/controllers/SMSNumController';
-import SMSLetController from './app/controllers/SMSLetController';
 import LogController from './app/controllers/LogController';
+import ContatoController from './app/controllers/ContatoController';
+import SMSController from './app/controllers/SMSController';
 
 const routes = new Router();
 
-// routes.post('/smsnum', (req, res) => {
-//   return res.json({ _id: 1 });
-// });
-
+//---------------------------------------------------------------------------
+//                    ROTAS DE LOGS
+//---------------------------------------------------------------------------
 routes.use('/', async (req, res, next) => {
   await Log.create({
     usuario: req.body.usuario,
@@ -25,9 +23,18 @@ routes.use('/', async (req, res, next) => {
 
 routes.get('/logs', LogController.show);
 
-routes.post('/smss', SMSController.post);
+//---------------------------------------------------------------------------
+//                    ROTAS DE Destinatários
+//---------------------------------------------------------------------------
 
-routes.post('/smsnum', SMSNumController.post);
-routes.post('/smslet', SMSLetController.post);
+routes.get('/destinatarios', ContatoController.show);
+routes.post('/destinatarios', ContatoController.post);
+
+//---------------------------------------------------------------------------
+//                    ROTAS DE SMSs
+//---------------------------------------------------------------------------
+
+routes.get('/smss', SMSController.show);
+routes.post('/smss', SMSController.post);
 
 export default routes;

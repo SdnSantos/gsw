@@ -4,7 +4,12 @@ class LogController {
   async show(req, res) {
     const logs = await Log.find();
 
-    return res.json(logs);
+    const logsFormatado = logs.map(l => ({
+      metodo: l.metodo,
+      rota: l.rota,
+    }));
+
+    return res.json(logsFormatado);
   }
 }
 

@@ -7,11 +7,19 @@ class SMSController {
   async show(req, res) {
     const smss = await SMS.find();
 
-    return res.json(smss);
+    const smssFormatado = smss.map(s => ({
+      _id: s.id,
+      usuario: s.usuario,
+      destinatario: s.destinatario,
+      msg: s.msg,
+      sequencia: s.sequencia,
+    }));
+
+    return res.json(smssFormatado);
   }
 
   async post(req, res) {
-    const { usuario, destino, msg, sequencia } = req.body;
+    const { usuario, destinatario, msg, sequencia } = req.body;
 
     const teclado = {
       ABC: 2,
@@ -73,14 +81,14 @@ class SMSController {
         //---------------------------------------------------------------------
         await SMS.create({
           usuario,
-          destino,
+          destinatario,
           msg,
           sequencia: saida,
         });
 
         return res.json({
           usuario,
-          destino,
+          destinatario,
           msg,
           sequencia: saida,
         });
@@ -134,14 +142,14 @@ class SMSController {
     //---------------------------------------------------------------------
     await SMS.create({
       usuario,
-      destino,
+      destinatario,
       msg: saida,
       sequencia,
     });
 
     return res.json({
       usuario,
-      destino,
+      destinatario,
       msg: saida,
       sequencia,
     });
