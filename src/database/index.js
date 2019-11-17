@@ -7,7 +7,7 @@ class Database {
 
   mongo() {
     this.mongoConnection = mongoose.connect(
-      process.env.URL || 'mongodb://localhost:27017/gsw',
+      process.env.DB_URL || 'mongodb://localhost:27017/gsw',
       {
         useNewUrlParser: true,
         useFindAndModify: true,
