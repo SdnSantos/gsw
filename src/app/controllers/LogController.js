@@ -5,6 +5,7 @@ class LogController {
     const logs = await Log.find();
 
     const logsFormatado = logs.map(l => ({
+      usuario: l.usuario,
       metodo: l.metodo,
       rota: l.rota,
     }));
