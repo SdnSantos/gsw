@@ -1,5 +1,4 @@
-import './bootstrap';
-
+// import './bootstrap';
 import express from 'express';
 import routes from './routes';
 
