@@ -1,10 +1,22 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});var _express = require('express');
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+Object.defineProperty(exports, '__esModule', { value: true });
+const _express = require('express');
 
-var _Log = require('./app/schemas/Log'); var _Log2 = _interopRequireDefault(_Log);
+const _Log = require('./app/schemas/Log');
 
-var _LogController = require('./app/controllers/LogController'); var _LogController2 = _interopRequireDefault(_LogController);
-var _ContatoController = require('./app/controllers/ContatoController'); var _ContatoController2 = _interopRequireDefault(_ContatoController);
-var _SMSController = require('./app/controllers/SMSController'); var _SMSController2 = _interopRequireDefault(_SMSController);
+const _Log2 = _interopRequireDefault(_Log);
+
+const _LogController = require('./app/controllers/LogController');
+
+const _LogController2 = _interopRequireDefault(_LogController);
+const _ContatoController = require('./app/controllers/ContatoController');
+
+const _ContatoController2 = _interopRequireDefault(_ContatoController);
+const _SMSController = require('./app/controllers/SMSController');
+
+const _SMSController2 = _interopRequireDefault(_SMSController);
 
 const routes = new (0, _express.Router)();
 
@@ -37,4 +49,4 @@ routes.post('/destinatarios', _ContatoController2.default.post);
 routes.get('/smss', _SMSController2.default.show);
 routes.post('/smss', _SMSController2.default.post);
 
-exports. default = routes;
+exports.default = routes;

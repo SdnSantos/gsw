@@ -1,4 +1,10 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});var _Log = require('../schemas/Log'); var _Log2 = _interopRequireDefault(_Log);
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+Object.defineProperty(exports, '__esModule', { value: true });
+const _Log = require('../schemas/Log');
+
+const _Log2 = _interopRequireDefault(_Log);
 
 class LogController {
   async show(req, res) {
@@ -13,4 +19,4 @@ class LogController {
   }
 }
 
-exports. default = new LogController();
+exports.default = new LogController();

@@ -1,7 +1,14 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});/* eslint-disable eqeqeq */
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+Object.defineProperty(exports, '__esModule', {
+  value: true,
+}); /* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
 
-var _SMS = require('../schemas/SMS'); var _SMS2 = _interopRequireDefault(_SMS);
+const _SMS = require('../schemas/SMS');
+
+const _SMS2 = _interopRequireDefault(_SMS);
 
 class SMSController {
   async show(req, res) {
@@ -156,4 +163,4 @@ class SMSController {
   }
 }
 
-exports. default = new SMSController();
+exports.default = new SMSController();

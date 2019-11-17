@@ -1,12 +1,20 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});require('./bootstrap');
-var _express = require('express'); var _express2 = _interopRequireDefault(_express);
-var _routes = require('./routes'); var _routes2 = _interopRequireDefault(_routes);
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+Object.defineProperty(exports, '__esModule', { value: true });
+require('./bootstrap');
+const _express = require('express');
+
+const _express2 = _interopRequireDefault(_express);
+const _routes = require('./routes');
+
+const _routes2 = _interopRequireDefault(_routes);
 
 require('./database');
 
 class App {
   constructor() {
-    this.server = _express2.default.call(void 0, );
+    this.server = _express2.default.call(void 0);
 
     this.middlewares();
     this.routes();
@@ -21,4 +29,4 @@ class App {
   }
 }
 
-exports. default = new App().server;
+exports.default = new App().server;
